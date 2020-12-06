@@ -24,6 +24,16 @@ def generate_email(sender, recipient, subject, body, attachment_path):
                               filename = attachment_file)
     return message
 
+def generate_error_report(sender, recipient, subject, body):
+
+    message = email.message.EmailMessage()
+    message["From"] = sender
+    message["To"] = recipient
+    message["Subject"] = subject
+    message.set_content(body)
+
+    return message
+
 def send(message):
 
     mail_server = smtplib.SMTP('localhost')
